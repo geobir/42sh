@@ -36,6 +36,7 @@ void			builtins(int built, char **arg, t_env **env);
 t_env			*makeenv(void);
 void			errorCMD(char *cmd);
 void			prompt(t_env *env);
-char			**split_operator(char *ligne);
+char			**split_operator(char *ligne, t_env **env);
+char			**takeenv(t_env *env);
 
 #endif

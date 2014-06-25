@@ -32,7 +32,7 @@ FILES	=	$(FUNFILE)			$(BUILFILE)			\
 			main				g_n_l				iscmd				\
 			searchcmd			isbuiltins			builtins			\
 			mainshell			makeenv				error				\
-			prompt				split_operator
+			prompt				split_operator		takeenv
 
 IDIR	=	inc
 
