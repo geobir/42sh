@@ -17,13 +17,6 @@
 #include <shell.h>
 #include <funct_base.h>
 
-static void		st_error(char *cmd)
-{
-	ft_putstr(ER_CMD);
-	ft_putstr(cmd);
-	write(1, "\n", 1);
-}
-
 static void		st_prompt(t_env *env)
 {
 	char	*prompt;

@@ -6,7 +6,7 @@
 #    By: gbir <gbir@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/04/15 04:58:45 by gbir              #+#    #+#              #
-#    Updated: 2014/05/14 14:26:58 by gbir             ###   ########.fr        #
+#    Updated: 2014/06/25 18:20:44 by gbir             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,7 +31,7 @@ BUILFILE=	built_cd			built_exit			built_env			\
 FILES	=	$(FUNFILE)			$(BUILFILE)			\
 			main				g_n_l				iscmd				\
 			searchcmd			isbuiltins			builtins			\
-			mainshell			makeenv
+			mainshell			makeenv				error
 
 IDIR	=	inc
 
