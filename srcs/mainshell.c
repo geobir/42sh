@@ -6,7 +6,7 @@
 /*   By: gbir <gbir@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/27 15:51:19 by gbir              #+#    #+#             */
-/*   Updated: 2014/04/27 15:51:20 by gbir             ###   ########.fr       */
+/*   Updated: 2014/06/25 19:55:36 by gbir             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <gnl.h>
 #include <shell.h>
 #include <funct_base.h>
+#include <stdio.h>
 
 static char		**st_takeenv(t_env *env)
 {
@@ -72,31 +73,46 @@ static void		st_loop(char **split, pid_t father, t_env **env)
 	}
 }
 
-void			mainshell(void)
+static void		st_launch(char *buff, t_env	**env)
 {
 	pid_t	father;
-	char	*buff;
-	char	**split;
-	t_env	*env;
 	int		built;
+	char	**split;
+
+	built = 0;
+	split = NULL;
+	split = ft_strsplit(buff, ' ');
+	if (*split && (built = isbuiltins(*split)) >= 0)
+	{
+		builtins(built, split, env);
+		prompt(*env);
+	}
+	else
+	{
+		father = fork();
+		st_loop(split, father, env);
+	}
+}
+
+void			mainshell(void)
+{
+	char	*buff;
+	t_env	*env;
+	int		i;
+	char	**split;
 
 	buff = NULL;
-	split = NULL;
 	env = makeenv();
 	prompt(env);
 	while (g_n_l(1, &buff))
 	{
-		built = 0;
-		split = ft_strsplit(buff, ' ');
-		if (*split && (built = isbuiltins(*split)) >= 0)
-		{
-			builtins(built, split, &env);
+		i = 0;
+		split = split_operator(buff);
+		if (!split[i])
 			prompt(env);
-		}
-		else
+		while (split[i])
 		{
-			father = fork();
-			st_loop(split, father, &env);
+			st_launch(split[i++], &env);
 		}
 	}
 }

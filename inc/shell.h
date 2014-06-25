@@ -13,6 +13,8 @@
 #ifndef SHELL_H
 # define SHELL_H
 
+# include <stdio.h>
+
 # define ER_EXEC "Fork error."
 # define PROMPT "\x1B[31m$>\033[00m", 12
 # define ER_CMD "zsh: command not found: "
@@ -34,5 +36,6 @@ void			builtins(int built, char **arg, t_env **env);
 t_env			*makeenv(void);
 void			errorCMD(char *cmd);
 void			prompt(t_env *env);
+char			**split_operator(char *ligne);
 
 #endif
