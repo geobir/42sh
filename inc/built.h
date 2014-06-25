@@ -17,7 +17,7 @@
 
 # define BUILIINS "cd", "setenv", "unsetenv", "env", "exit", NULL
 # define ER_B_PATH "cd: no such file or directory: "
-# define ER_NOHOME "env: HOME not found\n", 20 
+# define ER_NOHOME "env: HOME not found\n", 20
 
 void	built_cd(char *path, t_env *env);
 void	built_exit(void);

@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include <funct_base.h>
 
-void	errorCMD(char *cmd)
+void	error_cmd(char *cmd)
 {
 	ft_putstr(ER_CMD);
 	ft_putstr(cmd);

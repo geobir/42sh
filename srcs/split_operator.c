@@ -39,7 +39,7 @@ static void		st_loop(char **split, pid_t father, t_env **env)
 			execve(cmd, split, tmpenv);
 		}
 		else
-			errorCMD(split[0]);
+			error_cmd(split[0]);
 		exit(father);
 	}
 }
@@ -65,7 +65,7 @@ static void		st_launch(char *buff, t_env	**env)
 	}
 }
 
-char		**split_operator(char *ligne, t_env **env)
+char			**split_operator(char *ligne, t_env **env)
 {
 	char	**ret;
 	int		i;

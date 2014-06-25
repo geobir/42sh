@@ -16,6 +16,8 @@
 #include <shell.h>
 #include <built.h>
 
+#define RET tmp->data = data; return
+
 void	built_setenv(char *name, char *data, t_env **env)
 {
 	t_env	*tmp;
@@ -24,10 +26,7 @@ void	built_setenv(char *name, char *data, t_env **env)
 	while (tmp && tmp->name && tmp->data)
 	{
 		if (ft_strcmp(tmp->name, name) == 0)
-		{
-			tmp->data = data;
-			return ;
-		}
+			RET;
 		if (!tmp->next)
 			break ;
 		tmp = tmp->next;

@@ -34,7 +34,7 @@ char			*shearchcmd(char *path, char *cmd);
 int				isbuiltins(char *cmd);
 void			builtins(int built, char **arg, t_env **env);
 t_env			*makeenv(void);
-void			errorCMD(char *cmd);
+void			error_cmd(char *cmd);
 void			prompt(t_env *env);
 char			**split_operator(char *ligne, t_env **env);
 char			**takeenv(t_env *env);
