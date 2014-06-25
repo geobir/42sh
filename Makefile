@@ -31,7 +31,8 @@ BUILFILE=	built_cd			built_exit			built_env			\
 FILES	=	$(FUNFILE)			$(BUILFILE)			\
 			main				g_n_l				iscmd				\
 			searchcmd			isbuiltins			builtins			\
-			mainshell			makeenv				error
+			mainshell			makeenv				error				\
+			prompt
 
 IDIR	=	inc
 

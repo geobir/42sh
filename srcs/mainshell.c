@@ -17,30 +17,6 @@
 #include <shell.h>
 #include <funct_base.h>
 
-static void		st_prompt(t_env *env)
-{
-	char	*prompt;
-
-	prompt = NULL;
-	while (env && env->name && env->data)
-	{
-		if (ft_strcmp(env->name, "USER") == 0)
-		{
-			prompt = env->data;
-			break ;
-		}
-		env = env->next;
-	}
-	if (!prompt)
-	{
-		write(1, PROMPT);
-		return ;
-	}
-	write(1, "\x1B[31m", ft_strlen("\x1B[31m"));
-	write(1, prompt, ft_strlen(prompt));
-	write(1, ">\033[00m", ft_strlen(">\033[00m"));
-}
-
 static char		**st_takeenv(t_env *env)
 {
 	char	**ret;
@@ -81,7 +57,7 @@ static void		st_loop(char **split, pid_t father, t_env **env)
 	else if (father > 0)
 	{
 		wait(&father);
-		st_prompt(*env);
+		prompt(*env);
 	}
 	else
 	{
@@ -107,7 +83,7 @@ void			mainshell(void)
 	buff = NULL;
 	split = NULL;
 	env = makeenv();
-	st_prompt(env);
+	prompt(env);
 	while (g_n_l(1, &buff))
 	{
 		built = 0;
@@ -115,7 +91,7 @@ void			mainshell(void)
 		if (*split && (built = isbuiltins(*split)) >= 0)
 		{
 			builtins(built, split, &env);
-			st_prompt(env);
+			prompt(env);
 		}
 		else
 		{
