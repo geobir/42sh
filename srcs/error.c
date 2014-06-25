@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <shell.h>
+#include <unistd.h>
+#include <funct_base.h>
 
 void	errorCMD(char *cmd)
 {

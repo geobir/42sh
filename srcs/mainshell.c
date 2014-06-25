@@ -91,7 +91,7 @@ static void		st_loop(char **split, pid_t father, t_env **env)
 			execve(cmd, split, tmpenv);
 		}
 		else
-			st_error(split[0]);
+			errorCMD(split[0]);
 		exit(father);
 	}
 }

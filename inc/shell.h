@@ -32,5 +32,6 @@ char			*shearchcmd(char *path, char *cmd);
 int				isbuiltins(char *cmd);
 void			builtins(int built, char **arg, t_env **env);
 t_env			*makeenv(void);
+void			errorCMD(char *cmd);
 
 #endif
